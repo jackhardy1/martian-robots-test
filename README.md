@@ -1,3 +1,13 @@
+#### Setup instructions
+
+You need to have the Angular CLI installed globally to run this application. To do this, please run
+```npm install angular-cli -g```
+
+Once Angular-cli is installed, please run 
+```ng test``` to run tests and ```ng serve``` to run the application on localhost. 
+
+#### Notes on process
+
 ## Red Badger Martian Robots Test (12:40)
 
 Before starting the challenge, having read through the instructions carefully, I am going to make use of the sample data as much as possible, as well as to start with the hardest part first. I am going to approach this test in a Test-Driven-Development way. It would be harder to solve the logic first, and then easier to end with user Inputs / the UI. 
@@ -29,11 +39,6 @@ Have created a simple UI, with inputs and outputs to reflect what is needed in t
 
 #### 15:50
 I've added some error handling for some of the inputs, but ran out of time to finish it.
-
-
-
-
-
 
 
 ## Test Instructions
