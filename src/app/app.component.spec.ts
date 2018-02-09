@@ -132,6 +132,18 @@ describe('AppComponent', () => {
     expect(robot.currentXPosition).toBe(3);
   }))
   
-
+  it('can carry out multiple commands - sample input 1', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    var robot = new Robot(1, 1, "E");
+    var commands = "RFRFRFRF";
+    
+    app.carryOutCommands(robot, commands);
+    
+    expect(robot.currentXPosition).toBe(1);
+    expect(robot.currentYPosition).toBe(1);
+    expect(robot.currentDirection).toBe("E");
+  }))
   
 });

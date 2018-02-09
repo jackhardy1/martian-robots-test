@@ -11,6 +11,11 @@ export class AppComponent {
 
   title = 'app';
 
+  carryOutCommands(robot: Robot, commands: string) {
+    let commandsAsArray = commands.split("");
+    commandsAsArray.forEach(command => this.carryOutCommand(robot, command));
+  }
+
   carryOutCommand(robot: Robot, command: string) {
     switch (command) {
       case "F": this.moveForward(robot);

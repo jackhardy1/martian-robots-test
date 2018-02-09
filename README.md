@@ -13,6 +13,8 @@ Now the robot can move forward one step in every direction, I am now going to wr
 #### 13:20
 Test now passing to handle moving the robot forward, right and left. Now I am going to focus on handling more than one command at a time. 
 
+#### 13:40 (1 hour gone)
+Robot can now carry out mutliple commands at a time from a selecion of "L,R,F", tests passing. 
 
 
 ## Test Instructions
