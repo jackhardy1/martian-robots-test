@@ -27,6 +27,9 @@ Apart from that, the process can run multiple commands at the same time. Now I'm
 #### 15:10
 Have created a simple UI, with inputs and outputs to reflect what is needed in the test. I have 30 mins left, so I am going to work on imporoving the error handling, avoiding edge cases, then refactoring the code. 
 
+#### 15:50
+I've added some error handling for some of the inputs, but ran out of time to finish it.
+
 
 
 

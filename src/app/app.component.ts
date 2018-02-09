@@ -10,8 +10,6 @@ import { Instruction } from '../classes/instruction';
   
 export class AppComponent {
 
-  title = 'app';
-
   private xLimit: number;
   private yLimit: number;
 
@@ -19,8 +17,10 @@ export class AppComponent {
   public outputs: Array<string> = [];
 
   public addInstruction(startingXPosition: number, startingYPosition: number, startingDirection: string, commands: string) {
-    var robot = new Robot(startingXPosition, startingYPosition, startingDirection);
-    this.instructions.push({ robot: robot, commands: commands });
+    if (this.coordinatesAreWithinBoundaries(startingXPosition, startingYPosition) && this.directionIsValid(startingDirection) && this.commandsAreValid(commands)) {
+      var robot = new Robot(startingXPosition, startingYPosition, startingDirection);
+      this.instructions.push(new Instruction(robot, commands));
+    }
   }
 
   public runInstructions() {
@@ -106,11 +106,11 @@ export class AppComponent {
     }
   }
 
-  public hasBoundaries() {
-    return this.xLimit !== null || this.yLimit !== null;
+  public hasBoundaries(): boolean{
+    return !!this.xLimit && !!this.yLimit;
   }
 
-  public setBoundaries(xLimit: number, yLimit: number) {
+  public setBoundaries(xLimit: number, yLimit: number): void {
     if (xLimit > 50 || yLimit > 50) {
       window.alert("The maximum value for this is 50");  
     } else {
@@ -119,7 +119,35 @@ export class AppComponent {
     }
   }
 
-  // canRunInstructions() {
-  //   return this.outputs.length > 0;
-  // }
+  canRunInstructions(): boolean {
+    let rule1 = this.hasBoundaries();
+    let rule2 = this.instructions.length > 0;
+    return rule1 && rule2;
+  }
+
+  private coordinatesAreWithinBoundaries(xCoordinate: number, yCoordinate: number): boolean {
+    if (this.xLimit && this.yLimit) {
+      if (xCoordinate > this.xLimit || yCoordinate > this.yLimit) {
+        window.alert("The coordinates should be within the boundaries");
+        return false;
+      }
+      return true;
+    }
+  }
+
+  private directionIsValid(direction: string) {
+    if (/[^NESWnesw]/.test(direction)) {
+      window.alert("Direction must be either N,E,S,W");
+      return false
+    }
+    return true;
+  }
+
+  private commandsAreValid(commands: string): boolean {
+    if (/[^lrfLRF]/.test(commands)) {
+      window.alert("Commands must either be L,R or F");
+      return false
+    }
+    return true;
+  }
 }

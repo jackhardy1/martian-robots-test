@@ -6,33 +6,31 @@
 </div>
 
 
-<p>Grid Boundaries</p>
+<h2>Grid Boundaries</h2>
 <div *ngIf="hasBoundaries()">
   <p>X-Axis Limit: {{xLimit}}</p>
   <p>Y-Axis Limit: {{yLimit}}</p>
 </div>
 
 <label>X Limit</label>
-<input [(ngModel)]="x_limit" placeholder="x limit">
+<input [(ngModel)]="x_limit" type="number" placeholder="x limit">
 <label>Y Limit</label>
-<input [(ngModel)]="y_limit" placeholder="y limit">
+<input [(ngModel)]="y_limit" type="number" placeholder="y limit">
 
 <div class="full-width">
   <button (click)="setBoundaries(x_limit, y_limit)">Set boundaries</button>
 </div>
 
-<h2>Instructions</h2>
-
-<div>
+<div *ngIf="hasBoundaries()">
+  <h2>Instructions</h2>
   <p>Add Instruction</p>
-  
   <div class="full-width">
     <label>Starting X Position</label>
-    <input type="text" [(ngModel)]="startingXPosition">
+    <input type="text" type="number" [(ngModel)]="startingXPosition">
   </div>
   <div class="full-width">
     <label>Starting Y Position</label>
-    <input type="text" [(ngModel)]="startingYPosition">
+    <input type="text" type="number" [(ngModel)]="startingYPosition">
   </div>
   <div class="full-width">
     <label>Starting Direction</label>
@@ -50,7 +48,7 @@
   
   <div class="full-width">
     <button (click)="addInstruction(startingXPosition, startingYPosition, startingDirection, commands)">Add instruction/s</button>
-    <button (click)="runInstructions()">Run Instruction</button>
+    <button [disabled]="!canRunInstructions()" (click)="runInstructions()">Run Instruction</button>
   </div>
 </div>
   
