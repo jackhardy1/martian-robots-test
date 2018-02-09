@@ -22,4 +22,30 @@ export class AppComponent {
       robot.currentXPosition -= 1;
     }
   }
+
+  moveLeft(robot: Robot): void {
+    switch (robot.currentDirection) {
+      case "N": robot.currentDirection = "W";
+        break;   
+      case "E": robot.currentDirection = "N";
+        break;   
+      case "S": robot.currentDirection = "E";
+        break;   
+      case "W": robot.currentDirection = "S";
+        break;   
+    }
+  }
+
+  moveRight(robot: Robot): void {
+    switch (robot.currentDirection) {
+      case "N": robot.currentDirection = "E";
+        break;   
+        case "E": robot.currentDirection = "S";
+        break;   
+        case "S": robot.currentDirection = "W";
+        break;   
+        case "W": robot.currentDirection = "N";
+        break;   
+    }
+  }
 }

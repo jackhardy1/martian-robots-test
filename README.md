@@ -4,9 +4,11 @@ Before starting the challenge, having read through the instructions carefully, I
 I have chosen Angular-ClI for this project, as it is a quick way to get the basic setup running smoothly, including test support. I'd prefer to spend more time on the actual problem given the time constraints. 
 I have decided to start with the smallest possible movement of the robot to start with, then gradually build up the robots movements to be more complex. 
 
-#### 15:55
+#### 12:55
 The first test is passing now, the robot can move forward North. Now I will try the same for all directions to cover any possible error.
 
+#### 13:10
+Now the robot can move forward one step in every direction, I am now going to write tests for the other two commands & implement the functionality for moving left and right. 
 
 
 
