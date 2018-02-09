@@ -18,6 +18,13 @@ Robot can now carry out mutliple commands at a time from a selecion of "L,R,F", 
 
 #### 14:01 
 Robot is lost when out of bounds, and keeps last position before leaving boundaries
+I'm now going to focus on running more than one instruction at a time, as well as showing all of the sample data to prove output is correct. 
+
+#### 14:30
+From the sample data, we can see that input 1 & 2 are correct, but input 3 is not right. the Answer should be 33N Lost, not 23S. 
+Apart from that, the process can run multiple commands at the same time. 
+
+
 
 ## Test Instructions
 #### Developer Programming Problem

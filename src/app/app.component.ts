@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Robot } from '../classes/robot';
+import { Instruction } from '../classes/instruction';
 
 @Component({
   selector: 'app-root',
@@ -14,19 +15,36 @@ export class AppComponent {
   private xLimit: number;
   private yLimit: number;
 
+  public instructions: Array<Instruction> = [];
+  public outputs: Array<string> = [];
+
+  public addInstruction(startingXPosition: number, startingYPosition: number, startingDirection: string, commands: string) {
+    var robot = new Robot(startingXPosition, startingYPosition, startingDirection);
+    this.instructions.push({ robot: robot, commands: commands });
+  }
+
+  public runInstructions() {
+    this.instructions.forEach(i => this.carryOutCommands(i.robot, i.commands));
+  }
+
   carryOutCommands(robot: Robot, commands: string) {
     let commandsAsArray = commands.split("");
     commandsAsArray.forEach(command => this.carryOutCommand(robot, command));
+    let output = robot.currentXPosition.toString() + robot.currentYPosition.toString() + robot.currentDirection;
+    robot.isLost ? output += " LOST" : "";
+    this.outputs.push(output);
   }
 
   carryOutCommand(robot: Robot, command: string) {
-    switch (command) {
-      case "F": this.moveForward(robot);
-      break;   
-      case "L": this.moveLeft(robot);
-      break;   
-      case "R": this.moveRight(robot);
-      break;      
+    if (!robot.isLost) {
+      switch (command) {
+        case "F": this.moveForward(robot);
+        break;   
+        case "L": this.moveLeft(robot);
+        break;   
+        case "R": this.moveRight(robot);
+        break;      
+      }
     }
   }
 

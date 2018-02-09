@@ -154,10 +154,77 @@ describe('AppComponent', () => {
     var commands = "FFFFF";
     
     app.setBoundaries(2, 2);
-    
+
     app.carryOutCommands(robot, commands);
     
     expect(robot.isLost).toBeTruthy();
+  }))
+
+  it('sample input 1', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    app.setBoundaries(5,3)    
+    
+    var robot = new Robot(1, 1, "E");
+    var commands = "RFRFRFRF";
+    
+    app.carryOutCommands(robot, commands);
+    
+    expect(robot.currentXPosition).toBe(1);
+    expect(robot.currentYPosition).toBe(1);
+    expect(robot.currentDirection).toBe("E");
+  }))
+  
+  it('sample input 2', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    var robot = new Robot(3, 2, "N");
+    var commands = "FRRFLLFFRRFLL";
+    
+    app.setBoundaries(5,3)    
+    
+    app.carryOutCommands(robot, commands);
+    
+    expect(robot.currentXPosition).toBe(3);
+    expect(robot.currentYPosition).toBe(3);
+    expect(robot.currentDirection).toBe("N");
+    expect(robot.isLost).toBeTruthy();
+  }))
+  
+  it('sample input 3', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    var robot = new Robot(0, 3, "W");
+    var commands = "LLFFFLFLFL";
+    
+    app.setBoundaries(5,3)
+    
+    app.carryOutCommands(robot, commands);
+
+    expect(robot.currentXPosition).toBe(2);
+    expect(robot.currentYPosition).toBe(3);
+    expect(robot.currentDirection).toBe("S");
+    expect(robot.isLost).toBeFalsy();    
+  }))
+
+  it('can take more than one instruction at a time', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    app.setBoundaries(5,3)    
+        
+    app.addInstruction(1, 1, "E", "RFRFRFRF");
+    
+    app.addInstruction(3, 2, "N", "FRRFLLFFRRFLL");
+    
+    app.runInstructions();
+    
+    expect(app.outputs.length).toBe(2);
+    expect(app.outputs[0]).toBe("11E");
+    expect(app.outputs[1]).toBe("33N LOST");
   }))
   
 });
