@@ -24,7 +24,11 @@ export class AppComponent {
   }
 
   public runInstructions() {
-    this.instructions.forEach(i => this.carryOutCommands(i.robot, i.commands));
+    this.outputs = [];
+    this.instructions.forEach(i => {
+      let robot = new Robot(i.robot.currentXPosition, i.robot.currentYPosition, i.robot.currentDirection)
+      this.carryOutCommands(robot, i.commands)
+    });
   }
 
   carryOutCommands(robot: Robot, commands: string) {
@@ -102,12 +106,20 @@ export class AppComponent {
     }
   }
 
-  hasBoundaries() {
-    return this.xLimit !== null && this.yLimit !== null;
+  public hasBoundaries() {
+    return this.xLimit !== null || this.yLimit !== null;
   }
 
-  setBoundaries(xLimit: number, yLimit: number) {
-    this.xLimit = xLimit;
-    this.yLimit = yLimit;
+  public setBoundaries(xLimit: number, yLimit: number) {
+    if (xLimit > 50 || yLimit > 50) {
+      window.alert("The maximum value for this is 50");  
+    } else {
+      this.xLimit = xLimit;
+      this.yLimit = yLimit;
+    }
   }
+
+  // canRunInstructions() {
+  //   return this.outputs.length > 0;
+  // }
 }

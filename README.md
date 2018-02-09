@@ -22,7 +22,14 @@ I'm now going to focus on running more than one instruction at a time, as well a
 
 #### 14:30
 From the sample data, we can see that input 1 & 2 are correct, but input 3 is not right. the Answer should be 33N Lost, not 23S. 
-Apart from that, the process can run multiple commands at the same time. 
+Apart from that, the process can run multiple commands at the same time. Now I'm going to focus on handling this from the UI, as well as error handling, so that only correct commands and inputs can be allowed. 
+
+#### 15:10
+Have created a simple UI, with inputs and outputs to reflect what is needed in the test. I have 30 mins left, so I am going to work on imporoving the error handling, avoiding edge cases, then refactoring the code. 
+
+
+
+
 
 
 
