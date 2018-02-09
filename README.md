@@ -16,6 +16,8 @@ Test now passing to handle moving the robot forward, right and left. Now I am go
 #### 13:40 (1 hour gone)
 Robot can now carry out mutliple commands at a time from a selecion of "L,R,F", tests passing. 
 
+#### 14:01 
+Robot is lost when out of bounds, and keeps last position before leaving boundaries
 
 ## Test Instructions
 #### Developer Programming Problem

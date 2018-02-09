@@ -145,5 +145,19 @@ describe('AppComponent', () => {
     expect(robot.currentYPosition).toBe(1);
     expect(robot.currentDirection).toBe("E");
   }))
+
+  it('robot is lost when out of bounds', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    var robot = new Robot(2, 2, "N");
+    var commands = "FFFFF";
+    
+    app.setBoundaries(2, 2);
+    
+    app.carryOutCommands(robot, commands);
+    
+    expect(robot.isLost).toBeTruthy();
+  }))
   
 });

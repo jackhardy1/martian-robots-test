@@ -11,6 +11,9 @@ export class AppComponent {
 
   title = 'app';
 
+  private xLimit: number;
+  private yLimit: number;
+
   carryOutCommands(robot: Robot, commands: string) {
     let commandsAsArray = commands.split("");
     commandsAsArray.forEach(command => this.carryOutCommand(robot, command));
@@ -29,13 +32,29 @@ export class AppComponent {
 
   moveForward(robot: Robot): void {
     if (robot.currentDirection === "N") {
-      robot.currentYPosition += 1;
+      if (this.hasBoundaries() && robot.currentYPosition + 1 > this.yLimit) {
+        robot.isLost = true;
+      } else {
+        robot.currentYPosition += 1;
+      }
     } else if (robot.currentDirection === "E") {
-      robot.currentXPosition += 1;
+      if (this.hasBoundaries() && robot.currentXPosition + 1 > this.xLimit) {
+        robot.isLost = true;
+      } else {
+        robot.currentXPosition += 1;
+      }
     } else if (robot.currentDirection === "S") {
-      robot.currentYPosition -= 1;
+      if (this.hasBoundaries() && robot.currentYPosition - 1 < 0) {
+        robot.isLost = true;
+      } else {
+        robot.currentYPosition -= 1;
+      }
     } else if (robot.currentDirection === "W") {
-      robot.currentXPosition -= 1;
+      if (this.hasBoundaries() && robot.currentXPosition - 1 < 0) {
+        robot.isLost = true;
+      } else {
+        robot.currentXPosition -= 1;
+      }
     }
   }
 
@@ -63,5 +82,14 @@ export class AppComponent {
         case "W": robot.currentDirection = "N";
         break;   
     }
+  }
+
+  hasBoundaries() {
+    return this.xLimit !== null && this.yLimit !== null;
+  }
+
+  setBoundaries(xLimit: number, yLimit: number) {
+    this.xLimit = xLimit;
+    this.yLimit = yLimit;
   }
 }
