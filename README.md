@@ -2,7 +2,10 @@
 
 Before starting the challenge, having read through the instructions carefully, I am going to make use of the sample data as much as possible, as well as to start with the hardest part first. I am going to approach this test in a Test-Driven-Development way. It would be harder to solve the logic first, and then easier to end with user Inputs / the UI. 
 I have chosen Angular-ClI for this project, as it is a quick way to get the basic setup running smoothly, including test support. I'd prefer to spend more time on the actual problem given the time constraints. 
+I have decided to start with the smallest possible movement of the robot to start with, then gradually build up the robots movements to be more complex. 
 
+#### 15:55
+The first test is passing now, the robot can move forward North. Now I will try the same for all directions to cover any possible error.
 
 
 
