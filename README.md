@@ -10,6 +10,9 @@ The first test is passing now, the robot can move forward North. Now I will try 
 #### 13:10
 Now the robot can move forward one step in every direction, I am now going to write tests for the other two commands & implement the functionality for moving left and right. 
 
+#### 13:20
+Test now passing to handle moving the robot forward, right and left. Now I am going to focus on handling more than one command at a time. 
+
 
 
 ## Test Instructions

@@ -11,6 +11,17 @@ export class AppComponent {
 
   title = 'app';
 
+  carryOutCommand(robot: Robot, command: string) {
+    switch (command) {
+      case "F": this.moveForward(robot);
+      break;   
+      case "L": this.moveLeft(robot);
+      break;   
+      case "R": this.moveRight(robot);
+      break;      
+    }
+  }
+
   moveForward(robot: Robot): void {
     if (robot.currentDirection === "N") {
       robot.currentYPosition += 1;

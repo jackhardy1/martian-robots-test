@@ -83,5 +83,55 @@ describe('AppComponent', () => {
 
     expect(robot.currentDirection).toBe("W");
   }));
+
+  it('robot can move left, then forward, then right', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    var robot = new Robot(4,3,"W");
+
+    app.moveLeft(robot);
+    app.moveForward(robot);
+    app.moveRight(robot);
+
+    expect(robot.currentXPosition).toBe(4);
+    expect(robot.currentYPosition).toBe(2);
+    expect(robot.currentDirection).toBe("W");
+  }))
+  
+  it('can carry out one command left', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    var robot = new Robot(4,3,"W");
+
+    app.carryOutCommand(robot, "L");
+
+    expect(robot.currentDirection).toBe("S");
+  }))
+  
+  it('can carry out one command right', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    var robot = new Robot(4,3,"W");
+
+    app.carryOutCommand(robot, "R");
+
+    expect(robot.currentDirection).toBe("N");
+  }))
+  
+  it('can carry out one command foward', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    var robot = new Robot(4,3,"W");
+
+    app.carryOutCommand(robot, "F");
+
+    expect(robot.currentXPosition).toBe(3);
+  }))
+  
+
   
 });
