@@ -4,7 +4,7 @@ You need to have the Angular CLI installed globally to run this application. To 
 ```npm install angular-cli -g```
 
 Once Angular-cli is installed, please run 
-```ng test``` to run tests and ```ng serve``` to run the application on localhost. 
+```ng test``` to run tests and ```ng serve``` to run the application on localhost (http://localhost:4200/) 
 
 #### Notes on process
 
